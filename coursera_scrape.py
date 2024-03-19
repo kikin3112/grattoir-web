@@ -110,6 +110,3 @@ df = pd.DataFrame({'Plataforma': coursera,
                    })
 
 #df.to_csv('bm_coursera.csv', sep=';', encoding='utf-8-sig')
-df.head()
-
-print('HOLA')
