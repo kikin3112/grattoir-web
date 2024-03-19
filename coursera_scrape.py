@@ -141,4 +141,4 @@ df = pd.DataFrame({'Plataforma': coursera,
                    'Certificación': certificacion
                    })
 
-#df.to_csv('bm_coursera.csv', sep=';', encoding='utf-8-sig')
+df.to_csv('bm_coursera.csv', sep=';', encoding='utf-8-sig')
