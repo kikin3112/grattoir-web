@@ -3,8 +3,8 @@ import requests
 import pandas as pd
 
 coursera = 'COURSERA'
+modalidad = 'Course'
 link = []
-#modalidad = []
 nombre = []
 encargado = []
 idioma = []
@@ -128,6 +128,7 @@ for l_1, l_2 in zip(contenido_breve, contenido_full):
     contenido.append(sublista.strip())
         
 df = pd.DataFrame({'Plataforma': coursera,
+                   'Modalidad': modalidad,
                    'URL del curso': link,
                    'Nombre del curso': nombre,
                    'Encargado del curso': encargado,
@@ -141,4 +142,4 @@ df = pd.DataFrame({'Plataforma': coursera,
                    'Certificación': certificacion
                    })
 
-df.to_csv('bm_coursera.csv', sep=';', encoding='utf-8-sig')
+#df.to_csv('bm_coursera.csv', sep=';', encoding='utf-8-sig')
