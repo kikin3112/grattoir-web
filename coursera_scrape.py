@@ -112,11 +112,11 @@ for l in link:
 
     for c in box_content:
         contenidos_desc = c.find_all('p', class_ = "css-4s48ix")
-        cont_desc = []
+        cont_desc_pp = []
         for d in contenidos_desc:
             n = d.get_text(strip=True).encode('latin-1').decode('utf-8')
-            cont_desc.append(n)
-        contenido_full.append(cont_desc)
+            cont_desc_pp.append(n)
+        contenido_full.append(cont_desc_pp)
 
 #CONTENIDO (Nombre + descripción)
 
