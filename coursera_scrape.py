@@ -35,13 +35,13 @@ for i in range(1, 2):
         ctrl_precio.append(etiquetas)
     for label in ctrl_precio:
         if label == ['New']:
-            precio.append('Paid')
+            precio.append('Paid (59 US$/month)')
         elif label == ['Free']:
             precio.append('Free')
         elif label == ['New', 'Free']:
             precio.append(label[1])
         else:
-            precio.append('Paid')
+            precio.append('Paid (59 US$/month)')
 
     nombres = soup.find_all('h3', class_ = 'cds-CommonCard-title css-6ecy9b')
     for i in nombres:
