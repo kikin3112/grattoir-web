@@ -9,7 +9,11 @@ nombre = []
 encargado = []
 idioma = []
 descripcion = []
-#contenido = []
+
+contenido_breve = []
+contenido_full = []
+contenido = []
+
 metodologia = 'MOOC (xMOOC)'
 nivel = []
 duracion = []
@@ -94,7 +98,34 @@ for l in link:
                 combinado += d.get_text(strip=True).encode('latin-1').decode('utf-8') + ' '
             descripcion.append(combinado.strip())
 
-    #CONTENIDOS
+    #CONTENIDO (Nombre módulo)
+    
+    for c in box_content:
+        contenidos = c.find_all('h3', class_ = 'cds-119 cds-Typography-base css-h1jogs cds-121')
+        cont_b_pp = []
+        for c in contenidos:
+            n = c.get_text(strip=True).encode('latin-1').decode('utf-8')
+            cont_b_pp.append(n)
+        contenido_breve.append(cont_b_pp)
+
+    #CONTENIDO (Descripción módulo)
+
+    for c in box_content:
+        contenidos_desc = c.find_all('p', class_ = "css-4s48ix")
+        cont_desc = []
+        for d in contenidos_desc:
+            n = d.get_text(strip=True).encode('latin-1').decode('utf-8')
+            cont_desc.append(n)
+        contenido_full.append(cont_desc)
+
+#CONTENIDO (Nombre + descripción)
+
+for l_1, l_2 in zip(contenido_breve, contenido_full):
+    sublista = ""
+    for e_1, e_2 in zip(l_1, l_2):
+        titulo_descripcion = "{}: {}\n\n".format(e_1, e_2)
+        sublista += titulo_descripcion
+    contenido.append(sublista.strip())
         
 df = pd.DataFrame({'Plataforma': coursera,
                    'URL del curso': link,
@@ -102,6 +133,7 @@ df = pd.DataFrame({'Plataforma': coursera,
                    'Encargado del curso': encargado,
                    'Idioma del curso': idioma,
                    'Descripción del curso': descripcion,
+                   'Contenido del curso': contenido,
                    'Metodología del curso': metodologia,
                    'Nivel del curso': nivel,
                    'Duración del curso': duracion,
