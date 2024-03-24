@@ -137,7 +137,7 @@ df = pd.DataFrame({'Plataforma': udemy,
                    'Modalidad': modalidad,
                    'URL del curso': link,
                    'Nombre del curso': nombre,
-                   'Encargado/s del curso', encargado,
+                   'Encargado/s del curso': encargado,
                    'Idioma del curso': idioma,
                    'Descripción del curso': descripcion,
                    'Precio del curso': precio
