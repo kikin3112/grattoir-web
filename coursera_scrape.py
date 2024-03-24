@@ -70,7 +70,7 @@ for l in link:
     r_pw_enter = requests.get(l)
     sopa_pw_enter = BeautifulSoup(r_pw_enter.text, 'html.parser', from_encoding='utf-8')
 
-    box_lang = sopa_pw_enter.find_all('div', class_ = 'css-ddn3zj')
+    box_lang = sopa_pw_enter.find_all('div', class_ = 'css-1q4m1cr')
     box_description = sopa_pw_enter.find_all('div', class_ = 'css-1m8ahwj')
     box_content = sopa_pw_enter.find_all('div', class_ = 'css-1i4o2ol')
 
