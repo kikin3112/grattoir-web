@@ -124,7 +124,7 @@ for n in nombres_html:
         n = ' '.join(d.stripped_strings)
         descripcion.append(n) #clean_descripción
 
-    instructor = encargados.find_all('a')
+    instructor = box_host.find_all('a')
     nombres_instructor = []
     for i in instructor:
         n = i.get_text(strip=True)
