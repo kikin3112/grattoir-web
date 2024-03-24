@@ -3,6 +3,9 @@ import pyautogui
 import time
 import os
 import win32clipboard
+import shutil
+from bs4 import BeautifulSoup as bs
+import pandas as pd
 
 options = uc.ChromeOptions()
 driver = uc.Chrome(use_subprocess=True, options=options)
