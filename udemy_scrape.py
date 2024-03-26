@@ -4,7 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 import pyautogui
 import time
 import os
-import win32clipboard
+import pyperclip
 import shutil
 from bs4 import BeautifulSoup as bs
 import pandas as pd
@@ -56,15 +56,12 @@ for i in range(1, 2): #especifica el número de páginas con resultados a obtene
     pyautogui.hotkey('ctrl','a')
     pyautogui.hotkey('ctrl','c')
     pyautogui.press('enter')
-
-    win32clipboard.OpenClipboard()
-    nombre_resultados = win32clipboard.GetClipboardData()
     
     while not sensor(descargas_default, nombre_resultados, destino_resultados):
         time.sleep(1)
 
+    nombre_resultados = pyperclip.paste()
     html_resultados.append(nombre_resultados)
-    win32clipboard.CloseClipboard()
     
 # Extracción de link, nombre, nivel y duración de cada curso
 # (se extraen primeramente los links para poder acceder y 
@@ -125,15 +122,11 @@ for l in link:
     pyautogui.hotkey('ctrl','c')
     pyautogui.press('enter')
 
-    win32clipboard.OpenClipboard()
-    nombre_cursos = win32clipboard.GetClipboardData()
-
     while not sensor(descargas_default, nombre_cursos, destino_cursos):
         time.sleep(1)
 
+    nombre_cursos = pyperclip.paste()
     html_cursos.append(nombre_cursos)
-    win32clipboard.CloseClipboard()
-    
     time.sleep(1)
 
 driver.quit()
