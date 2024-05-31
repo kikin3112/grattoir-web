@@ -4,7 +4,7 @@ import pandas as pd
 
 pw_es = 'https://es.linkedin.com/learning/search?keywords=marketing+digital&upsellOrderOrigin=default_guest_learning&trk=learning-serp_learning-search-bar_search-submit&sortBy=RELEVANCE&entityType=COURSE'
 pw_en = 'https://www.linkedin.com/learning/search?keywords=marketing+digital&upsellOrderOrigin=guest_homepage-basic_guest_nav_menu_learning&trk=learning-serp_learning-search-bar_search-submit&sortBy=RELEVANCE&entityType=COURSE'
-r_resultado = requests.get(pw_en) #elegir idioma
+r_resultado = requests.get(pw_es) #elegir idioma
 sopa_resultado = bs(r_resultado.text, 'html.parser', from_encoding='utf-8')
 
 box_results = sopa_resultado.find('ul', class_ = 'results-list')
@@ -64,7 +64,7 @@ for l in link:
     box_level = sopa_curso.find('h2', class_ = 'top-card-layout__headline break-words font-sans text-md leading-open text-color-text')
     box_price = sopa_curso.find('form', class_ = 'buy-course-upsell__form')
 
-    descripciones = box_description.find_all('div', class_ = 'show-more-less-html__markup')
+    descripciones = box_description.find('div', class_ = 'show-more-less-html__markup')
     for d in descripciones:
         n = d.get_text(strip=True)
         descripcion.append(n) #clean_descripcion
@@ -114,7 +114,6 @@ for l in link:
 #pd.set_option('display.max_colwidth', None)
 
 df = pd.DataFrame({'Plataforma': linkedin,
-                   'Modalidad': modalidad,
                    'URL del curso': link,
                    'Nombre del curso': nombre,
                    'Encargado/s del curso': encargado,
@@ -129,5 +128,6 @@ df = pd.DataFrame({'Plataforma': linkedin,
                    'Certificación': certificacion
                    })
 
-#df.head()
-#df.to_csv('bm_linkedin.csv', sep=';', encoding='utf-8-sig')
+# df.to_csv('bm_linkedin_es.csv', sep=';', encoding='utf-8-sig')
+df.head()
+# Extracción: 28 de abril del 2024, 1:40 p.m.
